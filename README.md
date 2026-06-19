@@ -1,18 +1,72 @@
-# talentmatchai
+# TalentMatch AI
 
-A new Flutter project.
+TalentMatch AI is a cross-platform recruitment assistant built with Flutter for the mobile/client experience and Node.js/Express for the backend API.
 
-## Getting Started
+## Repository Structure
 
-This project is a starting point for a Flutter application.
+- `lib/` – Flutter application source code
+- `android/`, `ios/`, `linux/`, `macos/`, `windows/`, `web/` – platform folders for Flutter targets
+- `backend/` – backend server with Node.js, Express, and MongoDB support
+- `ai_service/` – auxiliary AI tooling and model utilities
+- `test/` – Flutter widget and unit tests
 
-A few resources to get you started if this is your first Flutter project:
+## Flutter App
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+The Flutter app uses:
+- `provider` for state management
+- `http` for API requests
+- `sqflite` for local storage
+- `shared_preferences` for simple persisted settings
+- `cached_network_image`, `google_fonts`, and `font_awesome_flutter` for UI polish
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# talentmatchai" 
+### Run the Flutter App
+
+1. Install Flutter and set up your device/emulator.
+2. From the repo root:
+   ```bash
+   flutter pub get
+   flutter run
+   ```
+
+## Backend Server
+
+The backend is located in `backend/` and provides authentication, job management, candidate handling, resume uploads, rankings, and reporting.
+
+### Run the Backend
+
+1. Install dependencies:
+   ```bash
+   cd backend
+   npm install
+   ```
+2. Create a `.env` file with values such as:
+   ```env
+   PORT=5000
+   MONGO_URI=mongodb://127.0.0.1:27017/talentmatch_ai
+   JWT_SECRET=your_secret_key
+   JWT_EXPIRE=30d
+   NODE_ENV=development
+   ```
+3. Start the server:
+   ```bash
+   npm run dev
+   ```
+
+## Recommended Workflow
+
+- Start the backend first.
+- Then run the Flutter app and point it to the backend API.
+- Use the platform-specific folders only when you need custom native behavior.
+
+## Notes
+
+- The project is currently configured as a private Flutter app with `publish_to: none`.
+- The backend includes production-ready features such as JWT auth, CORS, and secure password hashing.
+
+## Resources
+
+- [Flutter documentation](https://docs.flutter.dev/)
+- [Node.js documentation](https://nodejs.org/)
+- [Express documentation](https://expressjs.com/)
+- [MongoDB documentation](https://www.mongodb.com/docs/)
+ 
